@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en" data-theme="night">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Wraith</title>
+  <link id="favicon" rel="icon" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body data-view="home">
+
+  <!-- HOME -->
+  <main id="home">
+    <header class="home-top">
+      <span class="logo"><span class="glyph"></span>Wraith</span>
+      <button class="icon" data-settings aria-label="Settings" title="Settings">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 13a7.9 7.9 0 0 0 0-2l2-1.5-2-3.4-2.4 1a7.9 7.9 0 0 0-1.7-1l-.4-2.6h-4l-.4 2.6a7.9 7.9 0 0 0-1.7 1l-2.4-1-2 3.4L4.6 11a7.9 7.9 0 0 0 0 2l-2 1.5 2 3.4 2.4-1a7.9 7.9 0 0 0 1.7 1l.4 2.6h4l.4-2.6a7.9 7.9 0 0 0 1.7-1l2.4 1 2-3.4Z"/></svg>
+      </button>
+    </header>
+
+    <div class="hero">
+      <h1 class="headline">Go anywhere.<br>Quietly.</h1>
+      <form id="search" class="search" autocomplete="off">
+        <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="q" type="text" placeholder="Search Google or type a web address" spellcheck="false" autofocus>
+        <button type="submit" class="go">Go</button>
+      </form>
+      <p id="status" class="status"></p>
+    </div>
+
+    <section class="links">
+      <ul id="link-list"></ul>
+    </section>
+  </main>
+
+  <!-- BROWSER -->
+  <section id="browser" hidden>
+    <div class="tabs" id="tabs" role="tablist"></div>
+    <div class="nav">
+      <button class="icon" id="b-home" title="Home" aria-label="Home"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9h14v-9"/></svg></button>
+      <button class="icon" id="b-back" title="Back" aria-label="Back"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="icon" id="b-fwd" title="Forward" aria-label="Forward"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      <button class="icon" id="b-reload" title="Reload" aria-label="Reload"><svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg></button>
+      <form id="address" class="address"><input id="addr" type="text" spellcheck="false"></form>
+      <button class="icon" id="b-full" title="Full screen" aria-label="Full screen"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+      <button class="icon" data-settings title="Settings" aria-label="Settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 13a7.9 7.9 0 0 0 0-2l2-1.5-2-3.4-2.4 1a7.9 7.9 0 0 0-1.7-1l-.4-2.6h-4l-.4 2.6a7.9 7.9 0 0 0-1.7 1l-2.4-1-2 3.4L4.6 11a7.9 7.9 0 0 0 0 2l-2 1.5 2 3.4 2.4-1a7.9 7.9 0 0 0 1.7 1l.4 2.6h4l.4-2.6a7.9 7.9 0 0 0 1.7-1l2.4 1 2-3.4Z"/></svg></button>
+    </div>
+    <div id="frames"></div>
+  </section>
+
+  <!-- SETTINGS -->
+  <div id="scrim" hidden></div>
+  <aside id="settings" class="drawer" hidden aria-label="Settings">
+    <div class="drawer-top">
+      <h2>Settings</h2>
+      <button class="icon" id="close-settings" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+
+    <div class="set">
+      <label for="s-engine">Search engine</label>
+      <select id="s-engine">
+        <option value="https://www.google.com/search?q=%s">Google</option>
+        <option value="https://duckduckgo.com/?q=%s">DuckDuckGo</option>
+        <option value="https://www.bing.com/search?q=%s">Bing</option>
+        <option value="https://search.brave.com/search?q=%s">Brave</option>
+      </select>
+    </div>
+
+    <div class="set">
+      <label for="s-mode">Connection</label>
+      <select id="s-mode">
+        <option value="bare">Fast — lighter on this computer</option>
+        <option value="wisp">Encrypted — heavier, more private</option>
+      </select>
+      <p class="hint">Fast lets the server fetch pages, so your computer stays cool. Switch to Encrypted only if you need the traffic hidden from your network. Reload tabs after changing.</p>
+    </div>
+
+    <div class="set">
+      <label for="s-disguise">Tab disguise</label>
+      <select id="s-disguise">
+        <option value="none">None (Wraith)</option>
+        <option value="docs">Google Docs</option>
+        <option value="drive">Google Drive</option>
+        <option value="classroom">Google Classroom</option>
+        <option value="studyloop">StudyLoop</option>
+        <option value="custom">Custom…</option>
+      </select>
+      <div id="disguise-custom" hidden>
+        <input id="s-disguise-title" type="text" placeholder="Tab title">
+        <input id="s-disguise-icon" type="url" placeholder="Icon URL (optional)">
+      </div>
+    </div>
+
+    <div class="set">
+      <label for="s-panic-url">Panic key</label>
+      <p class="hint">Press <kbd>`</kbd> anywhere, even inside a page, to leave instantly for this address.</p>
+      <input id="s-panic-url" type="url" placeholder="https://www.google.com">
+    </div>
+
+    <div class="set">
+      <label for="s-theme">Theme</label>
+      <select id="s-theme">
+        <option value="night">Midnight</option>
+        <option value="violet">Ultraviolet</option>
+        <option value="light">Daylight</option>
+      </select>
+    </div>
+
+    <div class="set">
+      <button id="s-blank" class="wide ghost">Open in a blank page</button>
+      <p class="hint">Reopens Wraith inside an about:blank tab, so it won’t show in your history.</p>
+    </div>
+
+    <div class="set border-top">
+      <button id="s-lock" class="wide">Lock and leave</button>
+    </div>
+  </aside>
+
+  <dialog id="link-dialog">
+    <form method="dialog">
+      <h2>Add shortcut</h2>
+      <input id="l-name" placeholder="Name" maxlength="20" required>
+      <input id="l-url" placeholder="Address" required>
+      <menu>
+        <button value="cancel" formnovalidate class="ghost">Cancel</button>
+        <button value="save">Save</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/uv/uv.bundle.js"></script>
+  <script src="/uv/uv.config.js"></script>
+  <script src="/baremod/index.js" defer></script>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

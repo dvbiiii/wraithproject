@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>StudyLoop — Focus Timer &amp; Revision Hub</title>
+  <link rel="icon" href="/gate-icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/gate.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <img src="/gate-icon.svg" alt="" width="28" height="28">
+      <span>StudyLoop</span>
+    </div>
+    <nav>
+      <a href="#timer">Timer</a>
+      <a href="#subjects">Subjects</a>
+      <a href="#tips">Tips</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Revision, in focused loops</p>
+      <h1>Study in short, honest bursts. Rest without guilt.</h1>
+      <p class="lede">StudyLoop runs a simple focus timer and keeps your subjects in one place, so revision sessions start in seconds instead of excuses.</p>
+      <a class="cta" href="#timer">Start a session</a>
+    </section>
+
+    <section id="timer" class="timer-card">
+      <div class="dial" id="dial" role="timer" aria-label="Focus timer" tabindex="0">
+        <svg viewBox="0 0 200 200" aria-hidden="true">
+          <circle class="track" cx="100" cy="100" r="86"></circle>
+          <circle class="progress" id="ring" cx="100" cy="100" r="86"></circle>
+        </svg>
+        <div class="dial-face">
+          <span class="time" id="clock">25:00</span>
+          <span class="phase" id="phase">Focus</span>
+        </div>
+      </div>
+      <div class="controls">
+        <button id="start">Start</button>
+        <button id="reset" class="ghost">Reset</button>
+      </div>
+      <div class="lengths">
+        <button data-min="25" class="chip on">25 min</button>
+        <button data-min="15" class="chip">15 min</button>
+        <button data-min="50" class="chip">50 min</button>
+        <button data-min="5" class="chip">5 min break</button>
+      </div>
+    </section>
+
+    <section id="subjects" class="subjects">
+      <h2>Your subjects</h2>
+      <div class="grid">
+        <article><h3>Biology</h3><p>Cell transport, enzymes, the nervous system.</p><span class="bar"><i style="width:72%"></i></span></article>
+        <article><h3>History</h3><p>Causes of WWI, the interwar years, source analysis.</p><span class="bar"><i style="width:48%"></i></span></article>
+        <article><h3>Algebra</h3><p>Quadratics, simultaneous equations, graph sketching.</p><span class="bar"><i style="width:64%"></i></span></article>
+        <article><h3>English</h3><p>Essay structure, quotations, unseen poetry.</p><span class="bar"><i style="width:35%"></i></span></article>
+      </div>
+    </section>
+
+    <section id="tips" class="tips">
+      <h2>Three ideas that actually help</h2>
+      <ol>
+        <li><strong>Active recall.</strong> Close the book and write what you remember. Checking afterward is where the learning sticks.</li>
+        <li><strong>Spaced repetition.</strong> Revisit a topic a day later, then a week later. Short gaps beat one long cram.</li>
+        <li><strong>One subject per loop.</strong> Switching tasks mid-session costs focus. Finish the loop, then move on.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>StudyLoop keeps everything in your browser. Nothing is uploaded.</p>
+    <!-- The dot at the end is the way back in. -->
+    <span class="tick" id="unlock" title="StudyLoop" aria-hidden="true"></span>
+  </footer>
+
+  <!-- Hidden PIN pad -->
+  <div class="pad-scrim" id="pad" hidden>
+    <div class="pad" role="dialog" aria-modal="true" aria-label="Enter code">
+      <div class="dots" id="dots"><span></span><span></span><span></span><span></span></div>
+      <p class="pad-msg" id="padMsg">Enter code</p>
+      <div class="keys">
+        <button data-k="1">1</button><button data-k="2">2</button><button data-k="3">3</button>
+        <button data-k="4">4</button><button data-k="5">5</button><button data-k="6">6</button>
+        <button data-k="7">7</button><button data-k="8">8</button><button data-k="9">9</button>
+        <button class="muted" id="padCancel">Esc</button>
+        <button data-k="0">0</button>
+        <button class="muted" id="padDel">⌫</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/gate.js"></script>
+</body>
+</html>

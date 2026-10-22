@@ -1,0 +1,25 @@
+{
+  "name": "wraith",
+  "version": "1.0.0",
+  "description": "A password-protected web proxy built on Ultraviolet, Bare and Wisp.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@mercuryworkshop/bare-as-module3": "2.2.5",
+    "@mercuryworkshop/bare-mux": "2.1.9",
+    "@mercuryworkshop/epoxy-transport": "2.1.28",
+    "@mercuryworkshop/wisp-js": "0.4.1",
+    "@titaniumnetwork-dev/ultraviolet": "3.2.10",
+    "@tomphttp/bare-server-node": "2.0.6",
+    "express": "4.22.3"
+  },
+  "overrides": {
+    "ws": "8.21.3"
+  }
+}
